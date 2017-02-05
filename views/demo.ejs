@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <link rel="stylesheet" href="/stylesheets/demo.css" />
+    <!-- Latest compiled and minified CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"
+          integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+    <!-- Optional theme -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css"
+          integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">
+    <title>Démo de WebChat - version <%= version %></title>
+</head>
+
+<body>
+<div class="container" id="app">
+    <h1>WebChat -- Version <%= version %></h1><br><br>
+    <div class="messages" id="2">
+        <div class="row">
+            <div class="col-sm-8">
+                <message v-for="message in messages" :from="message.from"> {{ message.text }}</message>
+            </div>
+            <div class="col-sm-4">
+                <div class="row">
+                    <h3>Connected users :</h3>
+                    <ul>
+                        <li v-for="user in users"><a @click.prevent="changeTo" :to="user.id">{{ user.name }}</a></li>
+                    </ul>
+                </div>
+                <form class="form-group" @submit.prevent="send">
+                    <div class="row">
+                        <div class="col-md-10">
+                            <input type="text" class="form-control" placeholder="Type your message..." v-model.lazy="text" />
+                        </div>
+                        <div class="col-md-2">
+                            <button class="btn btn-primary">
+                                <span class="glyphicon glyphicon-envelope" style="margin-right: 5px;"></span> Send
+                            </button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- Jquery 3.1 cdn -->
+<script
+        src="https://code.jquery.com/jquery-3.1.1.min.js"
+        integrity="sha256-hVVnYaiADRTO2PzUGmuLJr8BLUSjGIZsDYGmIJLv2b8="
+        crossorigin="anonymous"></script>
+<!-- BootStrap 3.3 cdn -->
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"
+        integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous">
+</script>
+<!-- VueJs 2.1 cdn -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/vue/2.1.6/vue.js"></script>
+<!-- VueResource 1.0 cdn -->
+<script src="https://cdn.jsdelivr.net/vue.resource/1.0.3/vue-resource.min.js"></script>
+<!-- WebSockets 1.4 cdn -->
+<script src="javascripts/socket.io.js"></script>
+<!-- Mon application JS client -->
+<script>
+
+</script>
+<script src="javascripts/demo.js"></script>
+</body>
+</html>
